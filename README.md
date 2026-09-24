@@ -2,6 +2,8 @@
 
 一个写中文技术文档的 Agent Skill。它让 AI 写出的 README、设计文档、接口说明和教程更像工程师写的，读起来没有 AI 腔。
 
+规则基于阮一峰的[《中文技术文档的写作规范》](https://github.com/ruanyf/document-style-guide)整理，另外补充了一份「AI 腔清单」。
+
 适用于 Claude Code，以及其他支持 Agent Skills 的工具。
 
 ## 效果

@@ -1,8 +1,8 @@
 # zh-tech-writing
 
-一个写中文技术文档的 Agent Skill。它让 AI 写出的 README、设计文档、接口说明和教程更像工程师写的，读起来没有 AI 腔。
+一个写中文技术文档的 Agent Skill。用它写 README、设计文档、接口说明和教程，读起来像工程师写的，没有 AI 腔。
 
-规则基于阮一峰的[《中文技术文档的写作规范》](https://github.com/ruanyf/document-style-guide)整理，另外补充了一份「AI 腔清单」。
+规则基于阮一峰的[《中文技术文档的写作规范》](https://github.com/ruanyf/document-style-guide)整理，另外补充了一份“AI 腔清单”。
 
 适用于 Claude Code，以及其他支持 Agent Skills 的工具。
 
@@ -18,8 +18,8 @@
 
 改动有三处：
 - 删掉开场套话和感叹号。
-- 去掉「不仅……更……」这种句式和破折号。
-- 用具体事实替换「强大」「无缝」这类形容词。
+- 去掉“不仅……更……”这种句式和破折号。
+- 用具体事实替换“强大”“无缝”这类形容词。
 
 事实需要来自你的项目。skill 找不到事实时，会删掉空话，或者直接问你。
 
@@ -38,9 +38,9 @@ git clone https://github.com/leter/zh-tech-writing.git
 cp -r zh-tech-writing/skills/zh-tech-writing ~/.claude/skills/
 ```
 
-### 推荐：安装 autocorrect
+## 安装 autocorrect（推荐）
 
-[autocorrect](https://github.com/huacnlee/autocorrect) 是一个命令行工具。它会自动在中英文之间补空格，并把中文句子里的半角标点改成全角。装了它，skill 写完文档后会自动运行一遍；没装就跳过这一步。
+[autocorrect](https://github.com/huacnlee/autocorrect) 是一个命令行工具。它会自动在中英文之间补空格，并把中文句子里的半角标点改成全角。装了它，AI 写完文档后会按 skill 的要求运行一遍；没装就跳过这一步。
 
 ```bash
 # macOS
@@ -57,7 +57,7 @@ cargo install autocorrect
 
 ## 使用
 
-你让 AI 写或修改中文技术文档时，skill 会自动加载，不需要额外操作。比如：
+你让 AI 写或修改中文技术文档时，skill 通常会自动加载。比如：
 
 ```
 帮我给这个项目写一份 README
@@ -76,7 +76,7 @@ cargo install autocorrect
 /zh-tech-writing 检查 docs/api.md，只列问题，不要改
 ```
 
-它会按「原句 → 改后 → 原因」的格式列出问题。
+它会按“原句 → 改后 → 原因”的格式列出问题。
 
 ## 它做了什么
 
@@ -84,16 +84,16 @@ skill 让 AI 按下面的流程写文档：
 
 1. 先确定读者是谁，读完要能做成什么事。
 2. 按规则写：句子、语气、段落与结构、排版。
-3. 用「AI 腔清单」逐条检查全文，命中的地方全部改掉。
+3. 用“AI 腔清单”逐条检查全文，命中的地方全部改掉。
 4. 运行 `autocorrect --fix`，修正空格和标点。
 5. 手动检查 autocorrect 不管的引号、省略号和破折号。
 
 主要规则：
 
-- **句子**：逗号隔开的每一截尽量在 20 字以内。多用肯定句和主动语态。直接用动词，不套「进行」「做出」。
-- **语气**：像给同事讲清楚一件事。用数字、命令和报错原文代替形容词。
-- **结构**：每段第一句说重点。标题不跳级。少用四级标题。加粗和列表都不滥用。
-- **AI 腔清单**：共 14 条，包括开场和结尾套话、「不是 A，而是 B」句式、硬凑三个排比、宣传腔形容词、黑话、破折号和翻译腔。
+- 句子：逗号隔开的每一截尽量在 20 字以内。多用肯定句和主动语态。直接用动词，不套“进行”“做出”。
+- 语气：像给同事讲清楚一件事。用数字、命令和报错原文代替形容词。
+- 结构：每段第一句说重点。标题不跳级。少用四级标题。加粗和列表都不滥用。
+- AI 腔清单：共 14 条，包括开场和结尾套话、“不是 A，而是 B”句式、硬凑三个排比、宣传腔形容词、黑话、破折号和翻译腔。
 
 完整规则见 [SKILL.md](skills/zh-tech-writing/SKILL.md)。
 
@@ -114,9 +114,9 @@ skills/zh-tech-writing/
 - 句子、段落、标题、标点和数字的规则，整理自阮一峰的[《中文技术文档的写作规范》](https://github.com/ruanyf/document-style-guide)。原项目放在公共领域（public domain）。
   - 原规范里有两处符号写错了，这里改成了标准写法：破折号用 `——`，省略号用 `……`。
   - 原规范说数字和中文之间加不加空格都可以。这里统一定为加空格，这样和 autocorrect 的结果一致。
-  - 原规范要求「不使用非正式语言」。这里放宽为：可以口语化，但不用网络流行语。
+  - 原规范要求“不使用非正式语言”。这里放宽为：可以口语化，但不用网络流行语。
 - 原规范本身参考了华为《产品手册中文写作规范》、LeanCloud《文档风格指南》、[中文文案排版指北](https://github.com/sparanoid/chinese-copywriting-guidelines)、Google Developer Documentation Style Guide 和国家标准 GB/T 15835-2011。
-- 「AI 腔清单」「用事实代替形容词」和整套写作流程，是这个项目新增的内容。
+- “AI 腔清单”“用事实代替形容词”和整套写作流程，是这个项目新增的内容。
 - 空格和标点的自动修正由 [autocorrect](https://github.com/huacnlee/autocorrect)（MIT 许可）完成。本项目只调用这个工具，没有包含它的代码。
 
 ## 许可
